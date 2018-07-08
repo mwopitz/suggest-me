@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Suggest Me</string>
+    <string name="title_main_activity">What To Do?</string>
+    <string name="title_suggestion_activity">Try This!</string>
+
+    <string name="settings">Settings</string>
+    <string name="about_app">About Suggest Me</string>
+    <string name="filter">Filter</string>
+
+    <string name="category_image_description">Category icon</string>
+
+    <string name="category_random_title">Random Category</string>
+    <string name="category_random_description">Good luck!</string>
+
+    <string name="category_creativity_title">Creativity</string>
+    <string name="category_creativity_description">Open your mind</string>
+
+    <string name="category_logic_and_learning_title">Logic and Learning</string>
+    <string name="category_logic_and_learning_description">Discover joy in learning</string>
+
+    <string name="category_nature_and_outdoor_activities_title">Nature and Outdoor Activities</string>
+    <string name="category_nature_and_outdoor_activities_description">Outdoors fun!</string>
+
+    <string name="category_sport_and_exercise_title">Sport and Exercise</string>
+    <string name="category_sport_and_exercise_description">Improve you health</string>
+
+    <string name="category_reading_and_writing_title">Reading and Writing</string>
+    <string name="category_reading_and_writing_description">Open some books</string>
+
+    <string name="suggestion_category_1_easy_1_title">Paint a stone</string>
+    <string name="suggestion_category_1_medium_1_title">Paint an abstract self-portrait</string>
+    <string name="suggestion_category_1_hard_1_title">Make a sculpture with drinking straws</string>
+
+    <string name="suggestion_category_2_easy_1_title">Learn a foreign word</string>
+    <string name="suggestion_category_2_medium_1_title">Inform yourself about synesthesia</string>
+    <string name="suggestion_category_2_hard_1_title">Play Chess</string>
+
+    <string name="suggestion_category_3_easy_1_title">Hug a tree</string>
+    <string name="suggestion_category_3_medium_1_title">Go for a short walk</string>
+    <string name="suggestion_category_3_hard_1_title">Go for a long walk</string>
+
+    <string name="suggestion_category_4_easy_1_title">Do yoga (Mountain Pose)</string>
+    <string name="suggestion_category_4_medium_1_title">Do 5 situps</string>
+    <string name="suggestion_category_4_hard_1_title">Go jogging</string>
+
+    <string name="suggestion_category_5_easy_1_title">Write a letter to yourself</string>
+    <string name="suggestion_category_5_medium_1_title">Read a book backwards</string>
+    <string name="suggestion_category_5_hard_1_title">Write your own biography</string>
+
+</resources>
