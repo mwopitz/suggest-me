@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/difficulty_selection_title">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="easy_difficulty_checked"
+            android:summary="@string/easy_difficulty_description"
+            android:title="@string/easy_difficulty_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="medium_difficulty_checked"
+            android:summary="@string/medium_difficulty_description"
+            android:title="@string/medium_difficulty_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="hard_difficulty_checked"
+            android:summary="@string/hard_difficulty_description"
+            android:title="@string/hard_difficulty_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

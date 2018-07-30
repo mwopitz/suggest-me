@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_CATEGORY_NAME = "de.mwopitz.suggestions.CATEGORY_NAME";
 
-    private static final String FIRST_TIME_SETUP_KEY = "first-time setup required";
     private static final String TAG = "MainActivity";
 
     @Override
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        final RecyclerView categoryList = findViewById(R.id.categories);
+        final RecyclerView categoryList = findViewById(R.id.category_list);
         categoryList.setLayoutManager(new GridLayoutManager(this, 2));
 
         final CategoryListAdapter adapter = new CategoryListAdapter();
@@ -44,44 +43,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-        final boolean setup = getPreferences(MODE_PRIVATE).getBoolean(FIRST_TIME_SETUP_KEY, true);
-        if (setup) {
-            onFirstTimeSetup();
-            getPreferences(MODE_PRIVATE).edit().putBoolean(FIRST_TIME_SETUP_KEY, false).apply();
-        }
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar, menu);
+        getMenuInflater().inflate(R.menu.main_activity_toolbar, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_filter:
-                Toast.makeText(this, "Filter clicked", Toast.LENGTH_LONG).show();
-                return true;
             case R.id.action_settings:
-                Toast.makeText(this, "Settings clicked", Toast.LENGTH_LONG).show();
+                onSettingsSelected();
+                return true;
+            case R.id.action_about:
+                Toast.makeText(this, "About clicked", Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void onFirstTimeSetup() {
-        Log.i(TAG, "Performing first-time setup");
-        ViewModelProviders.of(this).get(AppDataViewModel.class).setup();
-    }
-
     private void onCategorySelected(Category category) {
         Intent intent = new Intent(this, SuggestionActivity.class);
         intent.putExtra(EXTRA_CATEGORY_NAME, category.name);
+        startActivity(intent);
+    }
+
+    private void onSettingsSelected() {
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 }

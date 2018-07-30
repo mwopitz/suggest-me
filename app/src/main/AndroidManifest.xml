@@ -12,19 +12,40 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_main_activity"
+            android:label="@string/main_activity_title"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "http://mwopitz.de/suggestions" -->
+                <data
+                    android:host="mwopitz.de"
+                    android:pathPrefix="/suggestions"
+                    android:scheme="http" />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".SuggestionActivity"
-            android:label="@string/title_suggestion_activity"
+            android:label="@string/suggestion_activity_title"
             android:parentActivityName="de.mwopitz.suggestions.MainActivity">
+            <!-- Compatibility for API < 16 -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.mwopitz.suggestions.MainActivity" />
+        </activity>
 
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings_activity_title"
+            android:parentActivityName="de.mwopitz.suggestions.MainActivity">
+            <!-- Compatibility for API < 16 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.mwopitz.suggestions.MainActivity" />

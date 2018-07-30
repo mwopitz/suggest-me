@@ -43,7 +43,7 @@ public class SuggestionActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar, menu);
+        getMenuInflater().inflate(R.menu.main_activity_toolbar, menu);
         return true;
     }
 }

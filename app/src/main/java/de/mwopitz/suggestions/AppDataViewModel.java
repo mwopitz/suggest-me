@@ -19,10 +19,6 @@ public class AppDataViewModel extends AndroidViewModel {
         mRepository = new AppDataRepository(application);
     }
 
-    void setup() {
-        mRepository.setupDatabase();
-    }
-
     LiveData<List<Category>> getAllCategories() {
         return mRepository.getAllCategories();
     }
