@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import de.mwopitz.suggestions.data.Category;
 
 /**

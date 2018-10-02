@@ -1,19 +1,20 @@
 package de.mwopitz.suggestions;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.preference.PreferenceManager;
+
 import de.mwopitz.suggestions.data.Suggestion;
 import de.mwopitz.suggestions.databinding.SuggestionActivityBinding;
 

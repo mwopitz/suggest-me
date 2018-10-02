@@ -1,14 +1,15 @@
 package de.mwopitz.suggestions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import de.mwopitz.suggestions.data.Category;
 import de.mwopitz.suggestions.databinding.CategoryListItemBinding;
 

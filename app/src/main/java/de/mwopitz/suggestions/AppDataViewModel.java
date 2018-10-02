@@ -1,13 +1,14 @@
 package de.mwopitz.suggestions;
 
-import android.app.Application;
-
 import java.util.List;
+
+import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import de.mwopitz.suggestions.data.AppDataRepository;
+
 import de.mwopitz.suggestions.data.Category;
 import de.mwopitz.suggestions.data.Suggestion;
 

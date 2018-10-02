@@ -1,13 +1,14 @@
 package de.mwopitz.suggestions.data;
 
+import java.util.List;
+
 import android.app.Application;
 import android.os.AsyncTask;
-
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
+
 import de.mwopitz.suggestions.R;
 
 /**
