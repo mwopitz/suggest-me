@@ -4,11 +4,12 @@ import android.app.Application;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import de.mwopitz.suggestions.appdata.AppDataRepository;
-import de.mwopitz.suggestions.appdata.Category;
-import de.mwopitz.suggestions.appdata.Suggestion;
+import de.mwopitz.suggestions.data.AppDataRepository;
+import de.mwopitz.suggestions.data.Category;
+import de.mwopitz.suggestions.data.Suggestion;
 
 public class AppDataViewModel extends AndroidViewModel {
 
@@ -19,6 +20,10 @@ public class AppDataViewModel extends AndroidViewModel {
         mRepository = new AppDataRepository(application);
     }
 
+    Suggestion getSuggestionPlaceholder() {
+        return mRepository.getSuggestionPlaceholder();
+    }
+
     LiveData<List<Category>> getAllCategories() {
         return mRepository.getAllCategories();
     }
@@ -27,19 +32,24 @@ public class AppDataViewModel extends AndroidViewModel {
         return mRepository.getAllSuggestions();
     }
 
-    LiveData<List<Suggestion>> getSuggestionsForCategory(Category category) {
+    LiveData<List<Suggestion>> getSuggestionsForCategory(@NonNull Category category) {
         return mRepository.getSuggestionsForCategory(category);
     }
 
-    LiveData<List<Suggestion>> getSuggestionsForCategory(String categoryName) {
-        return mRepository.getSuggestionsForCategory(categoryName);
+    LiveData<List<Suggestion>> getSuggestionsForCategory(@NonNull String categoryId) {
+        return mRepository.getSuggestionsForCategory(categoryId);
     }
 
-    void insertAll(Category... categories) {
+    LiveData<List<Suggestion>> getSuggestionsForUserPrefs(@NonNull String categoryId,
+                                                          @NonNull List<Suggestion.Difficulty> difficulties) {
+        return mRepository.getSuggestionsForUserPrefs(categoryId, difficulties);
+    }
+
+    void insertAll(@NonNull Category... categories) {
         mRepository.insertAll(categories);
     }
 
-    void insertAll(Suggestion... suggestions) {
+    void insertAll(@NonNull Suggestion... suggestions) {
         mRepository.insertAll(suggestions);
     }
 }

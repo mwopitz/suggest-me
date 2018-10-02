@@ -9,21 +9,35 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import de.mwopitz.suggestions.appdata.Category;
+import de.mwopitz.suggestions.data.Category;
 
+/**
+ * The entry point for this app.
+ * <p>
+ * The main activity displays a list of category cards. When one of these cards is touched,
+ * this activity starts the secondary {@link SuggestionActivity}, which in turn shows a
+ * random suggestion (for the selected category).
+ */
 public class MainActivity extends AppCompatActivity {
 
-    public static final String EXTRA_CATEGORY_NAME = "de.mwopitz.suggestions.CATEGORY_NAME";
+    /**
+     * Identifier for passing the selected category ID to the {@link SuggestionActivity}.
+     */
+    public static final String EXTRA_CATEGORY_ID = "de.mwopitz.suggestions.CATEGORY_ID";
 
-    private static final String TAG = "MainActivity";
+    private static final String LOG_TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         setSupportActionBar(findViewById(R.id.toolbar));
+
+        // Saving the default values for the user preferences. This seems to be required, somehow.
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
 
         final RecyclerView categoryList = findViewById(R.id.category_list);
         categoryList.setLayoutManager(new GridLayoutManager(this, 2));
@@ -37,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             if (categories != null) {
                 adapter.setCategories(categories);
             } else {
-                Log.e(TAG, "Could not find any categories!");
+                Log.e(LOG_TAG, "Could not find any categories!");
             }
         });
     }
@@ -55,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 onSettingsSelected();
                 return true;
             case R.id.action_about:
-                Toast.makeText(this, "About clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "About clicked", Toast.LENGTH_LONG).show(); // TODO: Maybe implement this sometime...
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -64,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onCategorySelected(Category category) {
         Intent intent = new Intent(this, SuggestionActivity.class);
-        intent.putExtra(EXTRA_CATEGORY_NAME, category.name);
+        intent.putExtra(EXTRA_CATEGORY_ID, category.id);
         startActivity(intent);
     }
 

@@ -1,19 +1,23 @@
-package de.mwopitz.suggestions.appdata;
+package de.mwopitz.suggestions.data;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
+import de.mwopitz.suggestions.R;
 
 /**
+ *
  * See: <a href="https://codelabs.developers.google.com/codelabs/android-room-with-a-view">Google Developers Codelabs: Android Room with a View</a>
  */
 public class AppDataRepository {
 
-    private static final String TAG = AppDataRepository.class.getSimpleName();
+    private static final String LOG_TAG = "AppDataRepository";
+
     private final CategoryDao mCategoryDao;
     private final SuggestionDao mSuggestionDao;
 
@@ -27,6 +31,11 @@ public class AppDataRepository {
         return mCategoryDao.getAllCategories();
     }
 
+    public Suggestion getSuggestionPlaceholder() {
+        return new Suggestion("placeholder", "none", Suggestion.Difficulty.EASY,
+                R.string.suggestion_title_placeholder);
+    }
+
     public LiveData<List<Suggestion>> getAllSuggestions() {
         return mSuggestionDao.getAllSuggestions();
     }
@@ -35,10 +44,15 @@ public class AppDataRepository {
         return mSuggestionDao.getSuggestionsForCategory(category.id);
     }
 
-    public LiveData<List<Suggestion>> getSuggestionsForCategory(String categoryName) {
-        LiveData<Category> categoryLiveData = mCategoryDao.findCategoryWithName(categoryName);
+    public LiveData<List<Suggestion>> getSuggestionsForCategory(String categoryId) {
+        LiveData<Category> categoryLiveData = mCategoryDao.getCategory(categoryId);
         return Transformations.switchMap(categoryLiveData,
                 category -> mSuggestionDao.getSuggestionsForCategory(category.id));
+    }
+
+    public LiveData<List<Suggestion>> getSuggestionsForUserPrefs(@NonNull String categoryId,
+                                                                 @NonNull List<Suggestion.Difficulty> difficulties) {
+        return mSuggestionDao.getSuggestionsForUserPrefs(categoryId, difficulties);
     }
 
     public void insertAll(Category... categories) {

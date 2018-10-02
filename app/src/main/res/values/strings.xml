@@ -39,6 +39,9 @@
     <string name="category_reading_and_writing_title">Reading and Writing</string>
     <string name="category_reading_and_writing_description">Open some books</string>
 
+    <string name="suggestion_title_placeholder">No suggestion found</string>
+    <string name="suggestion_difficulty_placeholder">Unknown difficulty</string>
+
     <string name="suggestion_category_1_easy_1_title">Paint a stone</string>
     <string name="suggestion_category_1_medium_1_title">Paint an abstract self-portrait</string>
     <string name="suggestion_category_1_hard_1_title">Make a sculpture with drinking straws</string>
@@ -52,7 +55,7 @@
     <string name="suggestion_category_3_hard_1_title">Go for a long walk</string>
 
     <string name="suggestion_category_4_easy_1_title">Do yoga (Mountain Pose)</string>
-    <string name="suggestion_category_4_medium_1_title">Do 5 situps</string>
+    <string name="suggestion_category_4_medium_1_title">Do 5 sit-ups</string>
     <string name="suggestion_category_4_hard_1_title">Go jogging</string>
 
     <string name="suggestion_category_5_easy_1_title">Write a letter to yourself</string>

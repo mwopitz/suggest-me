@@ -1,7 +1,8 @@
-package de.mwopitz.suggestions.appdata;
+package de.mwopitz.suggestions.data;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -20,9 +21,9 @@ interface CategoryDao {
     @Query("DELETE FROM categories")
     void deleteAll();
 
+    @Query("SELECT * FROM categories WHERE id LIKE :id")
+    LiveData<Category> getCategory(@NonNull String id);
+
     @Query("SELECT * FROM categories ORDER BY id ASC")
     LiveData<List<Category>> getAllCategories();
-
-    @Query("SELECT * FROM categories WHERE name LIKE :name")
-    LiveData<Category> findCategoryWithName(String name);
 }

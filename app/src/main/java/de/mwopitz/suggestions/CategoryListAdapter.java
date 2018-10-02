@@ -9,7 +9,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import de.mwopitz.suggestions.appdata.Category;
+import de.mwopitz.suggestions.data.Category;
 import de.mwopitz.suggestions.databinding.CategoryListItemBinding;
 
 class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {

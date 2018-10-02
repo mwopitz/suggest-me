@@ -1,4 +1,4 @@
-package de.mwopitz.suggestions.appdata;
+package de.mwopitz.suggestions.data;
 
 import android.widget.ImageView;
 
@@ -10,31 +10,48 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * The model class for all suggestion categories.
+ * <p>
+ * This is used for categories like "creativity", "logic and learning", "reading and writing", etc.
+ * Each category has an image reference and a title reference. These are used to display
+ */
 @Entity(tableName = "categories")
 public class Category {
 
-    @PrimaryKey
-    public final int id;
-
+    /**
+     * The primary key.
+     * I wanted at least one human-readable string for each database entry. The other fields are
+     * just obscure numbers.
+     */
     @NonNull
-    public final String name;
+    @PrimaryKey
+    public final String id;
 
+    /**
+     * The ID for the drawable (i.e. image) resource file.
+     */
     @DrawableRes
     @ColumnInfo(name = "drawable_res_id")
     public final int drawableResId;
 
+    /**
+     * The ID for the translatable title string resource.
+     */
     @StringRes
     @ColumnInfo(name = "title_res_id")
     public final int titleResId;
 
+    /**
+     * The ID for the translatable description string resource.
+     */
     @StringRes
     @ColumnInfo(name = "description_res_id")
     public final int descriptionResId;
 
-    Category(int id, @NonNull String name, @DrawableRes int drawableResId,
+    Category(@NonNull String id, @DrawableRes int drawableResId,
              @StringRes int titleResId, @StringRes int descriptionResId) {
         this.id = id;
-        this.name = name;
         this.drawableResId = drawableResId;
         this.titleResId = titleResId;
         this.descriptionResId = descriptionResId;

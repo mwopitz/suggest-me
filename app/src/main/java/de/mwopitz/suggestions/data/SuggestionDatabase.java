@@ -1,4 +1,4 @@
-package de.mwopitz.suggestions.appdata;
+package de.mwopitz.suggestions.data;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -7,9 +7,14 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+/**
+ * This is the main database interface. The RoomDatabase is almost definitely backed by SQLite.
+ */
 @Database(entities = {Category.class, Suggestion.class}, version = 1)
+@TypeConverters({Converters.class})
 abstract class SuggestionDatabase extends RoomDatabase {
 
     private static SuggestionDatabase sInstance; // Singleton
@@ -23,7 +28,7 @@ abstract class SuggestionDatabase extends RoomDatabase {
         }
     };
 
-    static SuggestionDatabase getDatabase(@NonNull final Context context) {
+    static SuggestionDatabase getDatabase(@NonNull Context context) {
         if (sInstance == null) {
             synchronized (SuggestionDatabase.class) {
                 if (sInstance == null) {

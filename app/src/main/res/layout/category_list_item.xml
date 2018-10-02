@@ -5,7 +5,7 @@
     <data>
         <variable
             name="category"
-            type="de.mwopitz.suggestions.appdata.Category" />
+            type="de.mwopitz.suggestions.data.Category" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -39,7 +39,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="@{category.titleResId}"
+                android:text="@{category.titleResId, default=@string/suggestion_title_placeholder}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
