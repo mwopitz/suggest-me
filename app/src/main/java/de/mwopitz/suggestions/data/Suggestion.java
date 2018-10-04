@@ -28,17 +28,20 @@ public class Suggestion {
     @NonNull
     @PrimaryKey
     public final String id;
+
     /**
      * The ID of the parent category.
      */
     @NonNull
     @ColumnInfo(name = "category_id")
     public final String categoryId;
+
     /**
      * The difficulty. Seems pretty straightforward
      */
     @ColumnInfo(name = "difficulty")
     public final Difficulty difficulty;
+
     /**
      * Resource ID of the translatable title string.
      */
@@ -66,5 +69,18 @@ public class Suggestion {
         public int getCode() {
             return code; // required for the interaction with @TypeConverter
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Suggestion)) return false;
+
+        return id.equals(((Suggestion) obj).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }
